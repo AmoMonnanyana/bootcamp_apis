@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <title>Document</title>
+</head>
+<body x-data="greetApi">
+<script src="app.js"></script>
+
+<section>
+    <h1>Wordgame Widget with API</h1>
+ <input type="text" x-model="sentence">
+<button x-on:click="analyseSentence">Analyse</button><br>
+
+<input type="radio" value="longestWord" id="longestWord" @click="showLongWord">
+<label for="longestWord">Longest Word</label>
+<input type="text" x-model="longestWord" x-show="longWord"><br>
+
+
+<input type="radio" value="shortestWord" id="shortestWord" @click="showShortWord">
+<label for="shortestWord">Shortest Word</label>
+<input type="text" x-model="shortestWord" x-show="shortWord"><br>
+
+<input type="radio" value="wordLength" id="wordLength" @click="showWordLength">
+<label for="wordLength">Word Length</label>
+<input type="text" x-model="wordLength" x-show="totalWords"><br>   
+</section>
+
+
+
+</body>
+</html>

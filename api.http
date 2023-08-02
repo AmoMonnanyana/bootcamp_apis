@@ -1,0 +1,69 @@
+//Post request for total cost of phone bill.
+POST http://localhost:3011/api/phonebill/total
+content-type: application/json
+
+{
+"bill" : "call, sms, call, sms, call"
+}
+
+###
+
+POST http://localhost:3011/api/phonebill/total
+content-type: application/json
+
+{
+"bill" : "call, sms, call, sms, sms, data, call"
+}
+
+###
+POST http://localhost:3011/api/phonebill/total
+content-type: application/json
+
+{
+"bill" : "call, call, call, call"
+}
+
+###
+
+//Get request for the price of 1 sms or call
+GET http://localhost:3011/api/phonebill/prices
+
+###
+
+//Post request for setting the prices for a call or sms.
+POST http://localhost:3011/api/phonebill/price
+content-type: application/json
+
+{
+    "type": "call",
+    "price": 3.00
+}
+
+###
+POST http://localhost:3011/api/phonebill/price
+content-type: application/json
+
+{
+    "type": "call",
+    "price": 4.99
+}
+
+###
+
+POST http://localhost:3011/api/phonebill/price
+content-type: application/json
+
+{
+    "type": "sms",
+    "price": 0.99
+}
+
+###
+
+POST http://localhost:3011/api/phonebill/price
+content-type: application/json
+
+{
+    "type": "sms",
+    "price": 0.49
+}
