@@ -23,7 +23,7 @@ document.addEventListener('alpine:init', () => {
         },
     
         analyseSentence(){
-           return  axios.get(`http://localhost:3011/api/word_game?sentence=${this.sentence}`)
+           return  axios.get(`/api/word_game?sentence=${this.sentence}`)
             .then((result) => {
                 //this.longestWord = result.data.longestWord
                 console.log(result.data.shortestWord)
