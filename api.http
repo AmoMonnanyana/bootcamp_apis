@@ -23,10 +23,6 @@ content-type: application/json
 "bill" : "call, call, call, call"
 }
 
-###
-
-//Get request for the price of 1 sms or call
-GET http://localhost:3011/api/phonebill/prices
 
 ###
 
@@ -35,8 +31,8 @@ POST http://localhost:3011/api/phonebill/price
 content-type: application/json
 
 {
-    "type": "call",
-    "price": 3.00
+    "billType": "call",
+    "price": 2.90
 }
 
 ###
@@ -44,7 +40,7 @@ POST http://localhost:3011/api/phonebill/price
 content-type: application/json
 
 {
-    "type": "call",
+    "billType": "call",
     "price": 4.99
 }
 
@@ -54,7 +50,7 @@ POST http://localhost:3011/api/phonebill/price
 content-type: application/json
 
 {
-    "type": "sms",
+    "billType": "sms",
     "price": 0.99
 }
 
@@ -64,6 +60,12 @@ POST http://localhost:3011/api/phonebill/price
 content-type: application/json
 
 {
-    "type": "sms",
+    "billType": "sms",
     "price": 0.49
 }
+
+###
+
+
+//Get request for the price of 1 sms or call
+GET http://localhost:3011/api/phonebill/prices?

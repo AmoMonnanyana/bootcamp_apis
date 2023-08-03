@@ -30,7 +30,32 @@
 <input type="text" x-model="wordLength" x-show="totalWords"><br>   
 </section>
 
+<section>
+    <h1>Phone Bill Widget</h1>
+<div>
+<h2>Compute Total PhoneBill</h2>
+<label for="bill">Bill :</label>
+<input type="text" x-model="bill" id="bill" value="bill">
+<button @click="fetchPhoneBill">Calculate</button><br>
+<label for="totalBill">Total:</label><input x-model="totalBill"><br>
 
+</div>
+
+<div>
+    <h2>Update Prices</h2>
+    <input type="text" x-model="type" placeholder="Bill type">
+     <input  x-model="suggestedPrice" placeholder="Price">
+     <button @click="changeThePrice">Change Price</button>
+</div>
+
+<div>
+    <h2>Show The Current Prices</h2>
+    <button @click="getPriceOfEachBill">Show Price</button><br>
+    <label for="sms_cost">Cost of Sms = </label><input x-model="sms_cost"><br>
+    <label for="call_cost">Cost of Call = </label><input x-model="call_cost">><br>
+</div>
+
+</section>
 
 </body>
 </html>

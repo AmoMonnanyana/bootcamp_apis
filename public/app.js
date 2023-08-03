@@ -9,6 +9,12 @@ document.addEventListener('alpine:init', () => {
         longWord: false,
         shortWord: false,
         totalWords: false,
+        totalBill: "",
+        bill: '',
+        sms_cost: 0,
+        call_cost: 0,
+        type: '',
+        suggestedPrice: 0,
 
         showLongWord(){
             this.longWord = !this.longWord
@@ -33,6 +39,42 @@ document.addEventListener('alpine:init', () => {
                 this.shortestWord = this.sentenceData.shortestWord
                 this.wordLength = this.sentenceData.sum
             })
+        },
+
+        getPhoneBill(){
+            
+            return axios.post(`/api/phonebill/total`, {
+                "bill" : this.bill 
+        })
+        },
+
+        fetchPhoneBill(){
+            console.log(this.bill);
+            this.getPhoneBill()
+            return axios.get(`/api/phonebill/total`)
+            .then((result) => {
+                this.totalBill = result.data.total
+            })
+        },
+
+        changeThePrice(){
+            console.log(this.suggestedPrice);
+            console.log(3);
+             return axios.post(`/api/phonebill/price`, {
+                 "billType" : this.type,
+                  "price" : this.suggestedPrice
+                 })
+
+                },
+        getPriceOfEachBill(){
+            //this.changeThePrice()
+            console.log(this.suggestedPrice);
+            return axios.get(`/api/phonebill/prices`)
+            .then((result => {
+                this.sms_cost = result.data.sms
+                this.call_cost = result.data.call
+                console.log(result.data.call)
+            }))
         },
 
       }
