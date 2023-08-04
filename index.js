@@ -3,6 +3,7 @@ import longestWord from './public/longesWord.js'
 import shortestWord from './public/shortestWord.js'
 import wordLengths from './public/wordlengths.js'
 import totalPhoneBill from './public/totalPhoneBill.js'
+import enoughAirtime from './public/enoughAirtime.js'
 
 
 const app = express()
@@ -62,25 +63,6 @@ app.post('/api/phonebill/price', function (req, res) {
 
 })
 
-/*app.get('/api/phonebill/price', function(req, res){
-    const billType = req.query.billType
-   
-    if (billType == 'call'){
-        res.json({
-          bill: `${billType}`,
-          price: calls
-        })
-        
-    } else if (billType == 'sms'){
-        res.json({
-            bill:`${billType}`,
-            price: smses
-        })
-    }
-
-    
-})*/
-
 //calculate the total cost of phonebill
 let bill = ""
 let total = 0 //totalPhoneBill(bill, calls, smses)
@@ -115,6 +97,36 @@ app.get('/api/phonebill/prices', function (req, res) {
     res.json({
         call: prices.call,
         sms: prices.sms
+    })
+})
+
+
+//check if the user has enough airtime
+const airtime_availability = {}
+//const usage = "call, sms, call"
+//const defaultResult = enoughAirtime(usage, 10)
+//airtime_availability[usage] = defaultResult
+let result = "R0.00"
+
+
+app.post('/api/enough', function(req, res){
+    const usage = req.body.usage
+    const available = req.body.available
+    const newResult = enoughAirtime(usage, available)
+    airtime_availability[usage] = newResult
+    result = newResult
+    res.json({
+        status: "success",
+        message: `the remaining balance is ${result}`
+    })
+})
+
+
+
+app.get('/api/enough', function (req, res) {
+    
+    res.json({
+       result
     })
 })
 
@@ -168,8 +180,8 @@ const PORT = process.env.PORT || 3011;
 
 app.listen(PORT, function () {
     console.log("app started")
-    console.log(prices)
-    console.log(smses)
-    console.log(calls)
+    
+   //console.log(airtime_availability)
+   console.log(result)
 
 });

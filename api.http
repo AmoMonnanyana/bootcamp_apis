@@ -69,3 +69,45 @@ content-type: application/json
 
 //Get request for the price of 1 sms or call
 GET http://localhost:3011/api/phonebill/prices?
+
+###
+
+//
+POST http://localhost:3011/api/enough
+content-type: application/json
+
+{
+    "usage": "sms, call, sms, call",
+    "available": 10
+}
+
+###
+
+POST http://localhost:3011/api/enough
+content-type: application/json
+
+{
+    "usage": "sms, call, sms, call, call, sms, call, sms",
+    "available": 25
+}
+
+###
+
+POST http://localhost:3011/api/enough
+content-type: application/json
+
+{
+    "usage": "sms, call, sms, call, sms, sms, sms call, sms, call, call",
+    "available": 10
+}
+
+###
+POST http://localhost:3011/api/enough
+content-type: application/json
+
+{
+    "usage": "call, call, call, call, call",
+    "available": 16
+}
+###
+GET http://localhost:3011/api/enough?usage=call, call, call, call, call

@@ -16,29 +16,38 @@
  <input type="text" x-model="sentence">
 <button x-on:click="analyseSentence">Analyse</button><br>
 
-<input type="radio" value="longestWord" id="longestWord" @click="showLongWord">
-<label for="longestWord">Longest Word</label>
-<input type="text" x-model="longestWord" x-show="longWord"><br>
+<ul>
+<li>
+    <label for="longestWord">Longest Word: </label>
+    <span type="text" x-text="longestWord" x-show="longWord"></span><br>
+    <button @click="showLongWord">Show</button>
+</li>
+<br>
 
 
-<input type="radio" value="shortestWord" id="shortestWord" @click="showShortWord">
-<label for="shortestWord">Shortest Word</label>
-<input type="text" x-model="shortestWord" x-show="shortWord"><br>
+<li>
+    <label for="shortestWord">Shortest Word: </label>
+    <span type="text" x-text="shortestWord" x-show="shortWord"></span><br>
+    <button @click="showShortWord">Show</button>
+</li>
+<br>
 
-<input type="radio" value="wordLength" id="wordLength" @click="showWordLength">
-<label for="wordLength">Word Length</label>
-<input type="text" x-model="wordLength" x-show="totalWords"><br>   
-</section>
+<li>
+    <label for="wordLength">Word Length: </label>
+    <span type="text" x-text="wordLength" x-show="totalWords"></span><br>
+    <button @click="showWordLength">Show</button>
+</li>
+<br>
+</ul>
 
 <section>
-    <h1>Phone Bill Widget</h1>
+    <h1>Phone Bill Widget</h1
 <div>
 <h2>Compute Total PhoneBill</h2>
 <label for="bill">Bill :</label>
 <input type="text" x-model="bill" id="bill" value="bill">
 <button @click="fetchPhoneBill">Calculate</button><br>
-<label for="totalBill">Total:</label><input x-model="totalBill"><br>
-
+<label for="totalBill">Total:</label><span x-text="totalBill"></span><br>
 </div>
 
 <div>
@@ -46,16 +55,26 @@
     <input type="text" x-model="type" placeholder="Bill type">
      <input  x-model="suggestedPrice" placeholder="Price">
      <button @click="changeThePrice">Change Price</button>
+     <p x-text="confirmation"></p>
 </div>
 
 <div>
     <h2>Show The Current Prices</h2>
     <button @click="getPriceOfEachBill">Show Price</button><br>
     <label for="sms_cost">Cost of Sms = </label><input x-model="sms_cost"><br>
-    <label for="call_cost">Cost of Call = </label><input x-model="call_cost">><br>
+    <label for="call_cost">Cost of Call = </label><input x-model="call_cost"><br>
 </div>
-
 </section>
 
+<section>
+    <h1>Enough Airtime</h1>
+    <input type="text" x-model="projectedUsage" placeholder="Phonebill">
+    <input  x-model="airtimeAmount" placeholder="airtime">
+    <button @click="showResult">Show Balance</button><br>
+    <label for="remainingBalance"> Projected remainingBalance =</label>
+    <span type="text" x-text="remainingBalance"></span>
+    <p><span x-text="message"></span></p>
+
+</section>
 </body>
 </html>

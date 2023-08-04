@@ -15,7 +15,15 @@ document.addEventListener('alpine:init', () => {
         call_cost: 0,
         type: '',
         suggestedPrice: 0,
+        projectedUsage: "",
+        airtimeAmount: 0,
+        remainingBalance: "",
+        airtimeAvailability: "",
+        available: false,
+        message: '',
+        confirmation: '',
 
+        //Wordgame widget//
         showLongWord(){
             this.longWord = !this.longWord
         },
@@ -41,6 +49,7 @@ document.addEventListener('alpine:init', () => {
             })
         },
 
+        //Total PhoneBill Widget
         getPhoneBill(){
             
             return axios.post(`/api/phonebill/total`, {
@@ -63,6 +72,10 @@ document.addEventListener('alpine:init', () => {
              return axios.post(`/api/phonebill/price`, {
                  "billType" : this.type,
                   "price" : this.suggestedPrice
+                 }).then((result) => {
+                    this.confirmation = result.data.message
+                    //console.log(result.data.message)
+                    //console.log(this.confirmation)
                  })
 
                 },
@@ -75,6 +88,30 @@ document.addEventListener('alpine:init', () => {
                 this.call_cost = result.data.call
                 console.log(result.data.call)
             }))
+        },
+
+        // Enough Airtime Widget
+        checkAirtime(){
+            axios.post(`/api/enough`,{
+            "usage" : this.projectedUsage,
+            "available" : this.airtimeAmount
+        })
+        },
+
+        showResult(){
+            this.checkAirtime()
+            return axios.get(`/api/enough`)
+            .then((result) => {
+                this.remainingBalance = result.data.result
+
+                if(Number(this.remainingBalance) > 0 ){
+                    this.message = "The airtime is enough for the projected usage"
+                } else {
+                    this.message = "Not enough airtime! Please recharge."
+                }
+                console.log(this.remainingBalance)
+                console.log(Number(this.remainingBalance))
+            })
         },
 
       }
