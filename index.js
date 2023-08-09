@@ -50,7 +50,7 @@ app.post('/api/phonebill/price', function (req, res) {
     console.log("PRICE: ", price);
     res.json({
         status: "success",
-        message: `the ${billType} was set to ${price}`
+        message: `The ${billType} was set to ${price}`
     })
     prices[billType] = price
 
@@ -117,7 +117,7 @@ app.post('/api/enough', function(req, res){
     result = newResult
     res.json({
         status: "success",
-        message: `the remaining balance is ${result}`
+        message: `The remaining balance is ${result}`
     })
 })
 

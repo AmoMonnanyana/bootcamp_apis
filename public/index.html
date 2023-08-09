@@ -7,20 +7,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="app.js"></script>
-    <title>Document</title>
+    <title>Bootcamp Widgets with API</title>
 </head>
 <body x-data="greetApi">
 
 <section>
     <h1>Wordgame Widget with API</h1>
- <input type="text" x-model="sentence">
+ <input type="text" x-model="sentence" placeholder="Sentence">
 <button x-on:click="analyseSentence">Analyse</button><br>
 
 <ul>
 <li>
     <label for="longestWord">Longest Word: </label>
     <span type="text" x-text="longestWord" x-show="longWord"></span><br>
-    <button @click="showLongWord">Show</button>
+    <span x-show="available"><button @click="showLongWord">Show</button></span>
 </li>
 <br>
 
@@ -28,26 +28,27 @@
 <li>
     <label for="shortestWord">Shortest Word: </label>
     <span type="text" x-text="shortestWord" x-show="shortWord"></span><br>
-    <button @click="showShortWord">Show</button>
+    <span x-show="available"><button @click="showShortWord">Show</button></span>
 </li>
 <br>
 
 <li>
     <label for="wordLength">Word Length: </label>
     <span type="text" x-text="wordLength" x-show="totalWords"></span><br>
-    <button @click="showWordLength">Show</button>
+    <span x-show="available"><button @click="showWordLength">Show</button></span>
 </li>
 <br>
 </ul>
 
 <section>
-    <h1>Phone Bill Widget</h1
+    <h1>Phone Bill Widget</h1>
 <div>
 <h2>Compute Total PhoneBill</h2>
-<label for="bill">Bill :</label>
-<input type="text" x-model="bill" id="bill" value="bill">
+<input type="text" x-model="bill" id="bill" value="bill" placeholder="Bill">
 <button @click="fetchPhoneBill">Calculate</button><br>
+<span x-show="showTotal">
 <label for="totalBill">Total:</label><span x-text="totalBill"></span><br>
+</span>
 </div>
 
 <div>
@@ -61,8 +62,11 @@
 <div>
     <h2>Show The Current Prices</h2>
     <button @click="getPriceOfEachBill">Show Price</button><br>
+    <span x-show="showPrice">
     <label for="sms_cost">Cost of Sms = </label><input x-model="sms_cost"><br>
     <label for="call_cost">Cost of Call = </label><input x-model="call_cost"><br>
+    </span>
+    
 </div>
 </section>
 
@@ -71,8 +75,10 @@
     <input type="text" x-model="projectedUsage" placeholder="Phonebill">
     <input  x-model="airtimeAmount" placeholder="airtime">
     <button @click="showResult">Show Balance</button><br>
-    <label for="remainingBalance"> Projected remainingBalance =</label>
+    <span x-show="showAmount">
+    <label for="remainingBalance"> Projected Balance =</label>
     <span type="text" x-text="remainingBalance"></span>
+    </span>
     <p><span x-text="message"></span></p>
 
 </section>
