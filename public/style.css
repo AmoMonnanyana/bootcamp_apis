@@ -1,0 +1,9 @@
+
+body {
+    background-image: url('./green\ background.jpg');
+    background-attachment: fixed;
+}
+
+.text {
+    color: white;
+}

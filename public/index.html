@@ -6,81 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
     <script src="app.js"></script>
     <title>Bootcamp Widgets with API</title>
 </head>
-<body x-data="greetApi">
+<body x-data="greetApi" class="" >
+    <div class="text-center shadow text-bg-dark m-1 rounded">
+        <h2>Bootcamp APIs</h2>
+    </div>
 
+<div class="container text-center">
+  <div class="row">
+    <div class="col m-3 border p-3 text rounded">
 <section>
-    <h1>Wordgame Widget with API</h1>
- <input type="text" x-model="sentence" placeholder="Sentence">
-<button x-on:click="analyseSentence">Analyse</button><br>
+<h4>Wordgame Widget with API</h4>
+<input class="m-2 rounded" type="text" x-model="sentence" placeholder="Sentence">
+<button  class= "btn btn-dark m-2 btn" x-on:click="analyseSentence">Analyse</button>
 
-<ul>
-<li>
+<p class="m-2">
     <label for="longestWord">Longest Word: </label>
     <span type="text" x-text="longestWord" x-show="longWord"></span><br>
     <span x-show="available"><button @click="showLongWord">Show</button></span>
-</li>
-<br>
+</p>
 
-
-<li>
+<p class="m-2">
     <label for="shortestWord">Shortest Word: </label>
     <span type="text" x-text="shortestWord" x-show="shortWord"></span><br>
     <span x-show="available"><button @click="showShortWord">Show</button></span>
-</li>
-<br>
+</p>
 
-<li>
+<p class="m-2">
     <label for="wordLength">Word Length: </label>
     <span type="text" x-text="wordLength" x-show="totalWords"></span><br>
     <span x-show="available"><button @click="showWordLength">Show</button></span>
-</li>
-<br>
-</ul>
-
-<section>
-    <h1>Phone Bill Widget</h1>
-<div>
-<h2>Compute Total PhoneBill</h2>
-<input type="text" x-model="bill" id="bill" value="bill" placeholder="Bill">
-<button @click="fetchPhoneBill">Calculate</button><br>
-<span x-show="showTotal">
-<label for="totalBill">Total:</label><span x-text="totalBill"></span><br>
-</span>
-</div>
-
-<div>
-    <h2>Update Prices</h2>
-    <input type="text" x-model="type" placeholder="Bill type">
-     <input  x-model="suggestedPrice" placeholder="Price">
-     <button @click="changeThePrice">Change Price</button>
-     <p x-text="confirmation"></p>
-</div>
-
-<div>
-    <h2>Show The Current Prices</h2>
-    <button @click="getPriceOfEachBill">Show Price</button><br>
-    <span x-show="showPrice">
-    <label for="sms_cost">Cost of Sms = </label><input x-model="sms_cost"><br>
-    <label for="call_cost">Cost of Call = </label><input x-model="call_cost"><br>
-    </span>
-    
-</div>
+</p>
 </section>
 
-<section>
-    <h1>Enough Airtime</h1>
-    <input type="text" x-model="projectedUsage" placeholder="Phonebill">
-    <input  x-model="airtimeAmount" placeholder="airtime">
-    <button @click="showResult">Show Balance</button><br>
-    <span x-show="showAmount">
-    <label for="remainingBalance"> Projected Balance =</label>
-    <span type="text" x-text="'R' + remainingBalance"></span>
-    </span>
-    <p><span x-text="message"></span></p>
+    </div>
+    <div class="col m-3 p-3 shadow text border rounded">
+        <section>
+            <h4>Enough Airtime</h4>
+            <input class="m-2 rounded" type="text" x-model="projectedUsage" placeholder="Phonebill">
+            <input class="m-2 rounded" x-model="airtimeAmount" placeholder="airtime">
+            <button class="m-2 btn btn-dark" @click="showResult">Show Balance</button><br>
+            <span x-show="showAmount">
+            <label for="remainingBalance"> Projected Balance =</label>
+            <span type="text" x-text="'R' + remainingBalance"></span>
+            </span>
+            <p><span x-text="message"></span></p>
+        </section>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col m-3 p-3 shadow mb-5 border text rounded">
+      
+        <section>
+            <h4>Phone Bill Widget</h4>
+        <div class="m-3">
+        <h5>Compute Total PhoneBill</h5>
+        <input class= "rounded" type="text" x-model="bill" id="bill" value="bill" placeholder="Bill">
+        <button class="m-2 btn btn-dark" @click="fetchPhoneBill">Calculate</button><br>
+        <span x-show="showTotal">
+        <label for="totalBill">Total:</label><span x-text="totalBill"></span><br>
+        </span>
+        </div>
+        
+        <div class="m-3">
+            <h5>Update Prices</h5>
+            <input class="m-2 rounded" type="text" x-model="type" placeholder="Bill type">
+             <input class="m-2 rounded"  x-model="suggestedPrice" placeholder="Price">
+             <button class="m-2 btn btn-dark" @click="changeThePrice">Change Price</button>
+             <p x-text="confirmation"></p>
+        </div>
+        
+        <div class="m-3">
+            <h5>Show The Current Prices</h5>
+            <button class="m-2 btn btn-dark" @click="getPriceOfEachBill">Show Price</button><br>
+            <p x-show="showPrice">
+            <span x-text="'Sms cost =' + sms_cost"></span><br>
+            <span x-text="'Call cost =' + call_cost"></span><br>
+            </p>
+            
+        </div>
+        </section>
 
-</section>
+      
+    </div>
+  </div>
+</div>
 </body>
 </html>
