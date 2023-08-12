@@ -1,9 +1,21 @@
 
 body {
-    background-image: url('./green\ background.jpg');
+    background-color: rgba(255, 173, 80, 0.575);
     background-attachment: fixed;
 }
 
+.wordgame {
+    background-color: rgba(53, 35, 38, 0.438)
+}
+
+.phonebill {
+    background-color: rgba(10, 22, 22, 0.363);
+}
+
+.airtime {
+    background-color: rgba(116, 90, 90, 0.384);
+}
+
 .text {
-    color: white;
+    color: rgb(27, 24, 24)
 }
