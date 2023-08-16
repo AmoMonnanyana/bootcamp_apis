@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,9 +10,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <script src="app.js"></script>
-    <title>Bootcamp Widgets with API</title>
+    <title>Word Game</title>
 </head>
-<body x-data="greetApi" class="wallPaper homepage" >
+<body x-data="greetApi" class="homepage">
 
     <nav class="navbar navbar-expand-lg navbar-color">
         <div class="container-fluid">
@@ -36,14 +35,30 @@
           </div>
         </div>
       </nav>
-
-      <div class="container m-5 bg-dark bg-opacity-10">
-        <h1 class="m-5">Bootcamp APIs</h1>
-
-        <h3 class="m-5">
-            By<br>Amogelang Monnanyana
-        </h3>
-      </div>  
-      
+    
+    <section class=" bg-dark bg-opacity-10 shadow container text-center my-5 w-75">
+        <h2 >Wordgame Widget</h2>
+        <div class="row">
+            <input class="m-3 col rounded" type="text" x-model="sentence" placeholder="Sentence">
+        </div>
+            <button  class="btn btn-dark m-2 btn" x-on:click="analyseSentence">Analyse</button>
+        <p class="m-3">
+            <label for="longestWord">Longest Word: </label>
+            <span type="text" x-text="longestWord" x-show="longWord"></span><br>
+            <span x-show="available"><button class=" m-2 btn btn-dark btn-sm" @click="showLongWord">Show</button></span>
+        </p>
+        
+        <p class="m-3">
+            <label for="shortestWord">Shortest Word: </label>
+            <span type="text" x-text="shortestWord" x-show="shortWord"></span><br>
+            <span x-show="available"><button class=" m-2 btn btn-dark btn-sm" @click="showShortWord">Show</button></span>
+        </p>
+        
+        <p class="m-3">
+            <label for="wordLength">Word Length: </label>
+            <span class="m-3" type="text" x-text="wordLength" x-show="totalWords"></span><br>
+            <span x-show="available"><button class=" m-2 btn btn-dark btn-sm" @click="showWordLength">Show</button></span>
+        </p>
+        </section>
 </body>
 </html>
