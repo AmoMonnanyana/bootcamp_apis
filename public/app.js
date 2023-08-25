@@ -50,14 +50,14 @@ document.addEventListener('alpine:init', () => {
                 this.longestWord = this.sentenceData.longestWord
                 this.shortestWord = this.sentenceData.shortestWord
                 this.wordLength = this.sentenceData.sum
-                this.available = true
+                this.available = !this.available
                 setTimeout(() => {
                     this.sentence = ''
                     this.available = false
                     this.longestWord = ''
                     this.shortestWord = ''
                     this.wordLength = ''
-                  }, 10000)
+                  }, 4000)
             })
         },
 
@@ -92,6 +92,7 @@ document.addEventListener('alpine:init', () => {
                   "price" : this.suggestedPrice
                  }).then((result) => {
                     this.confirmation = result.data.message
+                    this.getPriceOfEachBill()
                     setTimeout(() => {
                         this.type = ''
                         this.suggestedPrice = 0
@@ -109,10 +110,12 @@ document.addEventListener('alpine:init', () => {
                 this.sms_cost = result.data.sms
                 this.call_cost = result.data.call
                 console.log(result.data.call)
-                this.showPrice = !this.showPrice
+                //this.showPrice = !this.showPrice
             }))
         },
-
+        init(){
+            this.getPriceOfEachBill()
+        },
         // Enough Airtime Widget
         checkAirtime(){
             axios.post(`/api/enough`,{

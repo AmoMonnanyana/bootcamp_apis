@@ -42,23 +42,26 @@
             <input class="m-3 col rounded" type="text" x-model="sentence" placeholder="Sentence">
         </div>
             <button  class="btn btn-dark m-2 btn" x-on:click="analyseSentence">Analyse</button>
+        <div x-show="available">
         <p class="m-3">
             <label for="longestWord">Longest Word: </label>
-            <span type="text" x-text="longestWord" x-show="longWord"></span><br>
-            <span x-show="available"><button class=" m-2 btn btn-dark btn-sm" @click="showLongWord">Show</button></span>
-        </p>
+            <span type="text" x-text="longestWord"></span><br>
+          
+          </p>
         
         <p class="m-3">
             <label for="shortestWord">Shortest Word: </label>
-            <span type="text" x-text="shortestWord" x-show="shortWord"></span><br>
-            <span x-show="available"><button class=" m-2 btn btn-dark btn-sm" @click="showShortWord">Show</button></span>
+            <span type="text" x-text="shortestWord"></span><br>
+            
         </p>
         
         <p class="m-3">
             <label for="wordLength">Word Length: </label>
-            <span class="m-3" type="text" x-text="wordLength" x-show="totalWords"></span><br>
-            <span x-show="available"><button class=" m-2 btn btn-dark btn-sm" @click="showWordLength">Show</button></span>
+            <span class="m-3" type="text" x-text="wordLength"></span><br>
+          
         </p>
+        </div>
+            
         </section>
 </body>
 </html>
